@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sivakrishna.mvp2.R;
+import com.example.sivakrishna.mvp2.root.App;
 
 import javax.inject.Inject;
 
@@ -20,6 +21,7 @@ EditText editText,editText1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ((App) getApplication()).getComponent().inject(this);
         editText=(EditText)findViewById(R.id.edittext);
         editText1=(EditText)findViewById(R.id.edittext2);
         button=(Button)findViewById(R.id.button);
@@ -29,6 +31,12 @@ EditText editText,editText1;
                 presenter.loginbuttonclicked();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
     }
 
     @Override

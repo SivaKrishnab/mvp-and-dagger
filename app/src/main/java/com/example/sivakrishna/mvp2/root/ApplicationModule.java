@@ -1,7 +1,6 @@
 package com.example.sivakrishna.mvp2.root;
 
 import android.app.Application;
-import android.content.Context;
 
 import javax.inject.Singleton;
 
@@ -21,7 +20,7 @@ public class ApplicationModule {
     }
     @Provides
     @Singleton
-    public Context provideContext(){
+    public Application provideContext(){
         return application;
     }
 }
